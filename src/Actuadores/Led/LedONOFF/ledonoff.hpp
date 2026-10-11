@@ -1,18 +1,17 @@
+#ifndef LEDONOFF_HPP
+#define LEDONOFF_HPP
+
 #include "../led.hpp"
 
 class LedOnOff : public Led{
     private:
-        unsigned long _tiempoActual;
-        unsigned long _tiempoPasado;
-        unsigned long _intervalo;
+        int _pin;
 
     public:
-        LedOnOff(char nombre[LARGO_NOMBRE], int pin, bool estado, unsigned long tiempo);
+        LedOnOff(const char* nombre, int pin, bool estado);
+        void begin() override;
         void encender() override final;
         void apagar() override final;
-        void ajustarIntervalo(unsigned long intervalo);
-        void actualizar();
-        unsigned long getTiempoActual();
-        unsigned long getTiempoPasado();
-        unsigned long getIntervalo();
 };
+
+#endif

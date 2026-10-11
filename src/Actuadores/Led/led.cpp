@@ -1,12 +1,11 @@
 #include <Arduino.h>
 #include "led.hpp"
 
-Led::Led(char nombre[LARGO_NOMBRE], int pin, bool estado) : IActuador(nombre, pin){
+Led::Led(const char* nombre, bool estado) : IActuador(nombre){
     this->_estado = estado;
 }
 
 void Led::begin(){
-    pinMode(this->_pin, OUTPUT);
     if(this->_estado){
         encender();
     } else {
